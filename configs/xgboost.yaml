@@ -1,0 +1,27 @@
+# XGBoost Configuration
+model:
+  type: "xgboost"
+  n_estimators: 100
+  max_depth: 6
+  learning_rate: 0.1
+  subsample: 0.8
+  colsample_bytree: 0.8
+  random_state: 42
+
+data:
+  n_users: 1000
+  n_transactions: 10000
+  fraud_rate: 0.05
+  seed: 42
+
+features:
+  use_graph_features: true
+  use_imbalanced_learning: true
+
+evaluation:
+  thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+  metrics: ["auc_pr", "precision", "recall", "f1", "precision_at_1pct_recall"]
+
+logging:
+  level: "INFO"
+  log_file: "logs/xgboost_training.log"
